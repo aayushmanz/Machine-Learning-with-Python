@@ -4,8 +4,8 @@ import pandas as pd
 
 # Text Utility :
 
-st.title('Startup Dashboard')
-st.header('I am CEO')
+st.title('AYUz')
+st.header('Dashboard :')
 st.subheader('my company is the best in the world !')
 
 
