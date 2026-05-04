@@ -1,5 +1,6 @@
 import streamlit as st
 import pandas as pd
+import time as t
 
 
 # Text Utility :
@@ -44,3 +45,43 @@ st.json({
     'marks' : [50,60,90],
     'package' : [90, 50, 40]
 })
+
+# Displaying Media :
+
+st.image('image.png')
+
+st.video('https://www.youtube.com/watch?v=pO8qyjpkBzM')
+
+# st.audio() we can also use this !
+
+
+# Creating layouts
+
+st.sidebar.title('Menu SideBar !')
+
+a, b, c= st.columns(3)
+
+with a :
+    st.image('image.png')
+
+with b :
+    st.image('image.png')    
+
+with c :
+    st.image('image.png')  
+
+# showing status :
+
+st.error('Login is failed !')
+st.success('login Successful !')
+st.info('Mahipal is good girl !')
+st.warning('I am good boy !')
+
+# Progess bar :
+
+bar = st.progress(0)
+
+for i in range(1,101):
+    t.sleep(0.3)
+    bar.progress(i)
+    
