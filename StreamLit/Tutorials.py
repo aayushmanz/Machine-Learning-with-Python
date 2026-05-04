@@ -82,6 +82,16 @@ st.warning('I am good boy !')
 bar = st.progress(0)
 
 for i in range(1,101):
-    t.sleep(0.3)
+    t.sleep(0.1)
     bar.progress(i)
+
+# taking user input :
+
+# simple inputs :
+st.text_input('Enter Your Email ')
+st.number_input('Enter Your contact')
+st.date_input('Enter your birth date')
+
+# button -> baloons 
+
     
