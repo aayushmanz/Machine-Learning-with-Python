@@ -93,5 +93,14 @@ st.number_input('Enter Your contact')
 st.date_input('Enter your birth date')
 
 # button -> baloons 
+st.button('Click here')
+st.balloons() # easter eggs
+
+# dropdown :
+st.selectbox('Gender', ['male', 'female'])
+
+# file uploader :
+st.file_uploader('Upload a csv file')
+
 
     
