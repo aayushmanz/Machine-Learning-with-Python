@@ -9,8 +9,10 @@ option = st.sidebar.selectbox('Select one', ['Overall Anaysis', 'Startup', 'Inve
 if option == 'Overall Anaysis':
     st.title('Overall Anaysis')
 elif option == 'Startup':
-    st.sidebar.selectbox('Select startup',['Byjus','Ola','Flipkart'])
+    st.sidebar.selectbox('Select startup',sorted(df['Startup Name'].unique().tolist()))
     st.title('StartUp Analysis')
+    btn1 = st.sidebar.button('Find StartUps Details')
 else:
-     st.sidebar.selectbox('Select startup',['Amir aadmi 1','Amir aadmi 2',' Amir aadmi 3'])
+     st.sidebar.selectbox('Select startup',sorted(df['Investors Name'].fillna('Unknown').unique().tolist()))
      st.title('Investor Analysis')
+     btn1 = st.sidebar.button('Find Invester Details')
