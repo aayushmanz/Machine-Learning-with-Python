@@ -20,7 +20,7 @@ elif option == 'Startup':
     st.title('StartUp Analysis')
     btn1 = st.sidebar.button('Find StartUps Details')
 else:
-     investor = st.sidebar.selectbox('Select startup',set(df['investors'].str.split(',').sum()))
+     investor = st.sidebar.selectbox('Select startup',sorted(set(df['investors'].str.split(',').sum())))
      st.title('Investor Analysis')
      btn2 = st.sidebar.button('Find Invester Details')
      if btn2:
