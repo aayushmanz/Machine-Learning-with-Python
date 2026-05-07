@@ -1,10 +1,10 @@
-# Machine Learning with Python 🤖
+# Machine Learning with Python
 
 A hands-on learning journey through Machine Learning and Python-based data tools.
 
 ---
 
-## 📂 Repository Structure
+## Repository Structure
 
 ```
 Machine-Learning-with-Python/
@@ -18,7 +18,7 @@ Machine-Learning-with-Python/
 
 ---
 
-## 🚀 Projects
+## Projects
 
 ### StreamLit
 
@@ -32,7 +32,7 @@ Hands-on demos exploring the [Streamlit](https://streamlit.io/) library for buil
 
 ---
 
-## 🛠️ Setup & Running
+## Setup & Running
 
 1. **Clone the repository**
    ```bash
@@ -52,7 +52,7 @@ Hands-on demos exploring the [Streamlit](https://streamlit.io/) library for buil
 
 ---
 
-## 🧰 Technologies Used
+## Technologies Used
 
 - **Python 3**
 - **Streamlit** – interactive web apps
@@ -60,7 +60,7 @@ Hands-on demos exploring the [Streamlit](https://streamlit.io/) library for buil
 
 ---
 
-## 📝 License
+## License
 
 This project is licensed under the terms of the [LICENSE](LICENSE) file.
 
