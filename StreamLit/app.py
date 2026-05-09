@@ -1,5 +1,6 @@
 import streamlit as st
 import pandas as pd
+import matplotlib.pyplot as plt
 
 df = pd.read_csv('/workspaces/Machine-Learning-with-Python/StreamLit/startup_cleaned.csv')
 
@@ -8,7 +9,12 @@ def investor_details(data):
     investor_data = df[df['investors'].str.contains(investor)].head()[['date', 'startup', 'vertical', 'city', 'round', 'amount']]
     st.write('Last 5 investments : ')
     st.dataframe(investor_data)
+    big_series = df[df['investors'].str.contains('IDG Ventures')].groupby('startup')['amount'].sum().sort_values(ascending=False).head()
+    st.subheader('Biggest investments : ')
+    fig, ax = plt.subplots()
+    ax.bar(big_series.index,big_series.values)
 
+    st.pyplot(fig)
 
 st.sidebar.title('Startup Funding Analysis')
 option = st.sidebar.selectbox('Select one', ['Overall Anaysis', 'Startup', 'Investor'])
