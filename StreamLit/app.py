@@ -5,6 +5,7 @@ import matplotlib.pyplot as plt
 st.set_page_config(layout='wide', page_title='Startup Analysis')
 
 df = pd.read_csv('/workspaces/Machine-Learning-with-Python/StreamLit/startup_cleaned.csv')
+df['date'] = pd.to_datetime(df['date'], errors='coerce')
 
 def investor_details(data):
     st.subheader(investor)
@@ -23,24 +24,32 @@ def investor_details(data):
     with col2 :
          vertical_series = df[df['investors'].str.contains(investor)].groupby('vertical')['amount'].sum()
          st.subheader('Sectors invested : ')
-         fig1, ax = plt.subplots()
-         ax.pie(vertical_series, labels=vertical_series.index, autopct='%0.01f' )
+         fig1, ax1 = plt.subplots()
+         ax1.pie(vertical_series, labels=vertical_series.index, autopct='%0.01f' )
          st.pyplot(fig1)
 
     col3, col4 = st.columns(2)
     with col3:
         round_series = df[df['investors'].str.contains(investor)].groupby('round')['amount'].sum()  
         st.subheader('Round investments : ')
-        fig2, ax = plt.subplots()
-        ax.pie(round_series, labels=round_series.index, autopct='%0.01f' )
+        fig2, ax2 = plt.subplots()
+        ax2.pie(round_series, labels=round_series.index, autopct='%0.01f' )
         st.pyplot(fig2)
     
     with col4:
         city_series = df[df['investors'].str.contains(investor)].groupby('city')['amount'].sum()
         st.subheader('Cities investments : ')
-        fig3, ax = plt.subplots()
-        ax.bar(city_series.index,city_series.values)
+        fig3, ax3 = plt.subplots()
+        ax3.bar(city_series.index,city_series.values)
         st.pyplot(fig3)
+    
+    df['year'] = df['date'].dt.year
+    year_series = df[df['investors'].str.contains(investor)].groupby('year')['amount'].sum()   
+    st.subheader('YoY investments : ')
+    fig4, ax4 = plt.subplots()
+    ax4.plot(year_series.index,year_series.values)
+    st.pyplot(fig4)
+
 
 
           
