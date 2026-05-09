@@ -2,6 +2,8 @@ import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 
+st.set_page_config(layout='wide', page_title='Startup Analysis')
+
 df = pd.read_csv('/workspaces/Machine-Learning-with-Python/StreamLit/startup_cleaned.csv')
 
 def investor_details(data):
@@ -9,12 +11,23 @@ def investor_details(data):
     investor_data = df[df['investors'].str.contains(investor)].head()[['date', 'startup', 'vertical', 'city', 'round', 'amount']]
     st.write('Last 5 investments : ')
     st.dataframe(investor_data)
-    big_series = df[df['investors'].str.contains('IDG Ventures')].groupby('startup')['amount'].sum().sort_values(ascending=False).head()
-    st.subheader('Biggest investments : ')
-    fig, ax = plt.subplots()
-    ax.bar(big_series.index,big_series.values)
+    
+    col1, col2 = st.columns(2)
+    with col1 :
+         big_series = df[df['investors'].str.contains('IDG Ventures')].groupby('startup')['amount'].sum().sort_values(ascending=False).head()
+         st.subheader('Biggest investments : ')
+         fig, ax = plt.subplots()
+         ax.bar(big_series.index,big_series.values)
+         st.pyplot(fig)
 
-    st.pyplot(fig)
+    with col2 :
+         vertical_series = df[df['investors'].str.contains('IDG Ventures')].groupby('vertical')['amount'].sum()
+         st.subheader('Sectors invested : ')
+         fig1, ax = plt.subplots()
+         ax.pie(vertical_series)
+         st.pyplot(fig1)
+          
+
 
 st.sidebar.title('Startup Funding Analysis')
 option = st.sidebar.selectbox('Select one', ['Overall Anaysis', 'Startup', 'Investor'])
