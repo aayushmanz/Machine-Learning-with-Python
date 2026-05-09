@@ -14,18 +14,35 @@ def investor_details(data):
     
     col1, col2 = st.columns(2)
     with col1 :
-         big_series = df[df['investors'].str.contains('IDG Ventures')].groupby('startup')['amount'].sum().sort_values(ascending=False).head()
+         big_series = df[df['investors'].str.contains(investor)].groupby('startup')['amount'].sum().sort_values(ascending=False).head()
          st.subheader('Biggest investments : ')
          fig, ax = plt.subplots()
          ax.bar(big_series.index,big_series.values)
          st.pyplot(fig)
 
     with col2 :
-         vertical_series = df[df['investors'].str.contains('IDG Ventures')].groupby('vertical')['amount'].sum()
+         vertical_series = df[df['investors'].str.contains(investor)].groupby('vertical')['amount'].sum()
          st.subheader('Sectors invested : ')
          fig1, ax = plt.subplots()
-         ax.pie(vertical_series)
+         ax.pie(vertical_series, labels=vertical_series.index, autopct='%0.01f' )
          st.pyplot(fig1)
+
+    col3, col4 = st.columns(2)
+    with col3:
+        round_series = df[df['investors'].str.contains(investor)].groupby('round')['amount'].sum()  
+        st.subheader('Round investments : ')
+        fig2, ax = plt.subplots()
+        ax.pie(round_series, labels=round_series.index, autopct='%0.01f' )
+        st.pyplot(fig2)
+    
+    with col4:
+        city_series = df[df['investors'].str.contains(investor)].groupby('city')['amount'].sum()
+        st.subheader('Cities investments : ')
+        fig3, ax = plt.subplots()
+        ax.bar(city_series.index,city_series.values)
+        st.pyplot(fig3)
+
+
           
 
 
