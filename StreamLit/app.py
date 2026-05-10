@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 
 st.set_page_config(layout='wide', page_title='Startup Analysis')
 
-df = pd.read_csv('/workspaces/Machine-Learning-with-Python/StreamLit/startup_cleaned.csv')
+df = pd.read_csv('StreamLit/startup_cleaned.csv')
 df['date'] = pd.to_datetime(df['date'], errors='coerce')
 df['month']= df['date'].dt.month
 df['year']= df['date'].dt.year
