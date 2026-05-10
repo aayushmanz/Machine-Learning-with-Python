@@ -94,10 +94,7 @@ st.sidebar.title('Startup Funding Analysis')
 option = st.sidebar.selectbox('Select one', ['Overall Anaysis', 'Startup', 'Investor'])
 
 if option == 'Overall Anaysis':
-    
-    btn0 = st.sidebar.button('Show overall Analysis')
-    if btn0 :
-        load_overall_analysis()
+    load_overall_analysis()
         
 elif option == 'Startup':
     st.sidebar.selectbox('Select startup',sorted(df['startup'].unique().tolist()))
