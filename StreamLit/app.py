@@ -9,9 +9,14 @@ df['date'] = pd.to_datetime(df['date'], errors='coerce')
 
 def load_overall_analysis():
     st.title('Overall analysis')
+
     # total invested amount :
     total = round(df['amount'].sum())
+    # max amount infused in the startup.
+    max_funding = df.groupby('startup')['amount'].max().sort_values(ascending=False).head(1).values[0]
+    
     st.metric('Total', str(total) + ' Cr')
+    st.metric('Max', str(max_funding) + ' Cr')
 
 def investor_details(data):
     st.subheader(investor)
