@@ -6,6 +6,8 @@ st.set_page_config(layout='wide', page_title='Startup Analysis')
 
 df = pd.read_csv('/workspaces/Machine-Learning-with-Python/StreamLit/startup_cleaned.csv')
 df['date'] = pd.to_datetime(df['date'], errors='coerce')
+df['month']= df['date'].dt.month
+df['year']= df['date'].dt.year
 
 def load_overall_analysis():
     st.title('Overall analysis')
@@ -27,7 +29,18 @@ def load_overall_analysis():
     with col3 :
       st.metric('Avg', str(avg_funding) + ' Cr') 
     with col4 :
-      st.metric('Funded Startups', str(total_funded))     
+      st.metric('Funded Startups', str(total_funded))
+
+    st.header('MoM Chart')  
+    selected_option = st.selectbox('Select Type',['Total', 'Count'])
+    if selected_option == 'Total':
+        temp_df = df.groupby(['year', 'month'])['amount'].sum().reset_index()
+    else:   
+        temp_df = df.groupby(['year', 'month'])['amount'].count().reset_index() 
+    temp_df['x_axis'] = temp_df['month'].astype(str) + "-" + temp_df['year'].astype('str')
+    fig5, ax5 = plt.subplots()
+    ax5.plot(temp_df['x_axis'],temp_df['amount'])
+    st.pyplot(fig5)
 
 def investor_details(data):
     st.subheader(investor)
