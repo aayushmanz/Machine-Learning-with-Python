@@ -15,8 +15,11 @@ def load_overall_analysis():
     # max amount infused in the startup.
     max_funding = df.groupby('startup')['amount'].max().sort_values(ascending=False).head(1).values[0]
     
-    st.metric('Total', str(total) + ' Cr')
-    st.metric('Max', str(max_funding) + ' Cr')
+    col1, col2, col3, col4 = st.columns(4)
+    with col1:
+      st.metric('Total', str(total) + ' Cr')
+    with col2 :  
+      st.metric('Max', str(max_funding) + ' Cr')
 
 def investor_details(data):
     st.subheader(investor)
