@@ -7,6 +7,12 @@ st.set_page_config(layout='wide', page_title='Startup Analysis')
 df = pd.read_csv('/workspaces/Machine-Learning-with-Python/StreamLit/startup_cleaned.csv')
 df['date'] = pd.to_datetime(df['date'], errors='coerce')
 
+def load_overall_analysis():
+    st.title('Overall analysis')
+    # total invested amount :
+    total = round(df['amount'].sum())
+    st.metric('Total', str(total) + ' Cr')
+
 def investor_details(data):
     st.subheader(investor)
     investor_data = df[df['investors'].str.contains(investor)].head()[['date', 'startup', 'vertical', 'city', 'round', 'amount']]
@@ -59,7 +65,11 @@ st.sidebar.title('Startup Funding Analysis')
 option = st.sidebar.selectbox('Select one', ['Overall Anaysis', 'Startup', 'Investor'])
 
 if option == 'Overall Anaysis':
-    st.title('Overall Anaysis')
+    
+    btn0 = st.sidebar.button('Show overall Analysis')
+    if btn0 :
+        load_overall_analysis()
+        
 elif option == 'Startup':
     st.sidebar.selectbox('Select startup',sorted(df['startup'].unique().tolist()))
     st.title('StartUp Analysis')
