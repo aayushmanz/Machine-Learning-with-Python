@@ -1,38 +1,50 @@
 # Machine Learning with Python
 
-A hands-on learning journey through Machine Learning and Python-based data tools.
-
----
+A hands-on repository for learning Python-based Machine Learning, data handling, and Streamlit app development.
 
 ## Repository Structure
 
-```
+```text
 Machine-Learning-with-Python/
-│
+├── Data Gathering & File Handling/
+│   ├── Read CSV File For ML.ipynb
+│   ├── Read JSON and SQL in ML.ipynb
+│   ├── f1_podiums_1950_2026.csv
+│   ├── file.tsv
+│   ├── test.csv
+│   ├── train (1).json
+│   └── world.sql
+├── ML/
+│   ├── End_to_End_ML.ipynb
+│   ├── model.pkl
+│   └── placement.csv
 └── StreamLit/
-    ├── Tutorials.py       # Streamlit UI components & layout tutorial
-    ├── File_upload.py     # CSV file uploader with summary stats
-    ├── login.py           # Simple login form demo
-    └── image.png          # Sample image used in tutorials
+    ├── app.py
+    ├── Tutorials.py
+    ├── File_upload.py
+    ├── login.py
+    ├── Startup.ipynb
+    ├── requirements.txt
+    ├── startup_cleaned.csv
+    └── startup_funding.csv
 ```
 
----
+## What This Repository Covers
 
-## Projects
+- **Data gathering and file handling** with CSV, TSV, JSON, and SQL examples
+- **Machine Learning workflow** notebooks and model artifacts
+- **Streamlit mini-projects** for interactive Python data apps
 
-### StreamLit
+## Streamlit Apps
 
-Hands-on demos exploring the [Streamlit](https://streamlit.io/) library for building interactive web apps with Python.
+Inside the `StreamLit/` folder:
 
-| File | Description |
-|---|---|
-| `Tutorials.py` | Covers Streamlit essentials: text elements, dataframes, media, layouts, status messages, a progress bar, and user input widgets |
-| `File_upload.py` | Lets users upload a CSV file and instantly view summary statistics via `df.describe()` |
-| `login.py` | A basic login form with email/password validation and gender selection |
+- `Tutorials.py` — Streamlit components and widget demos
+- `File_upload.py` — CSV upload and quick summary analysis
+- `login.py` — basic login form demo
+- `app.py` — startup funding analysis dashboard
 
----
-
-## Setup & Running
+## Getting Started
 
 1. **Clone the repository**
    ```bash
@@ -40,27 +52,28 @@ Hands-on demos exploring the [Streamlit](https://streamlit.io/) library for buil
    cd Machine-Learning-with-Python
    ```
 
-2. **Install dependencies**
+2. **Install dependencies (Streamlit apps)**
    ```bash
-   pip install streamlit pandas
+   pip install -r StreamLit/requirements.txt
    ```
 
-3. **Run a Streamlit app**
+3. **Run any Streamlit app**
    ```bash
-   streamlit run StreamLit/Tutorials.py
+   streamlit run StreamLit/app.py
    ```
+   You can also run:
+   - `streamlit run StreamLit/Tutorials.py`
+   - `streamlit run StreamLit/File_upload.py`
+   - `streamlit run StreamLit/login.py`
 
----
+## Tech Stack
 
-## Technologies Used
-
-- **Python 3**
-- **Streamlit** – interactive web apps
-- **Pandas** – data manipulation & analysis
-
----
+- Python 3
+- Streamlit
+- Pandas
+- Matplotlib
+- Jupyter Notebook
 
 ## License
 
-This project is licensed under the terms of the [LICENSE](LICENSE) file.
-
+This project is licensed under the [LICENSE](LICENSE) file.
